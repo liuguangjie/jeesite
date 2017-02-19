@@ -46,7 +46,7 @@
 	
 	<!-- 插件配置 -->
 	<plugins>
-		<plugin interceptor="com.thinkgem.jeesite.common.persistence.interceptor.PaginationInterceptor" />
+		<plugin interceptor="com.thinkgem.jeesite.common.persistence.interceptor.PaginationInterceptor"/>
     </plugins>
 	
 </configuration>
