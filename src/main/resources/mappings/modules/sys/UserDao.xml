@@ -239,7 +239,7 @@
 			user_type, 
 			create_by, 
 			create_date, 
-			update_by, 
+			update_by, jeesite
 			update_date, 
 			remarks, 
 			login_flag, 

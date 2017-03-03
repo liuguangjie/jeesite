@@ -61,8 +61,8 @@
 	<repositories>
 	
 		<repository>
-			<id>jeesite-repos</id>
-			<name>Jeesite Repository</name>
+			<id>aliyun</id>
+			<name>aliyun</name>
 			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
 		</repository>
 		
@@ -315,6 +315,11 @@
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-ehcache</artifactId>
 			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>7.0.65</version>
 		</dependency>
 		<!-- SECURITY end -->
 		
