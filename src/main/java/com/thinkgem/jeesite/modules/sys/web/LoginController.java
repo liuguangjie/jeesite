@@ -63,6 +63,8 @@ public class LoginController extends BaseController{
 		if (Global.TRUE.equals(Global.getConfig("notAllowRefreshIndex"))){
 			CookieUtils.setCookie(response, "LOGINED", "false");
 		}
+
+		//request.setAttribute("isValidateCodeLogin",true);
 		
 		// 如果已经登录，则跳转到管理首页
 		if(principal != null && !principal.isMobileLogin()){
