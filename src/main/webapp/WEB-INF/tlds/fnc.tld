@@ -11,7 +11,7 @@
   <short-name>fnc</short-name>
   <uri>http://java.sun.com/jsp/jstl/functionsc</uri>
 
-  <function>
+  <!--<function>
     <description>获取当前管理站点编号</description>
     <name>getCurrentSiteId</name>
     <function-class>com.thinkgem.jeesite.modules.cms.entity.Site</function-class>
@@ -97,6 +97,6 @@
     <function-class>com.thinkgem.jeesite.modules.cms.utils.CmsUtils</function-class>
     <function-signature>java.util.List getLinkList(java.lang.String, java.lang.String, int, java.lang.String)</function-signature>
     <example>${fnc:getLinkList(siteId, categoryId, number, param)}</example>  
-  </function>
+  </function>-->
   
 </taglib>

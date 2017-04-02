@@ -27,7 +27,9 @@
 	</script>
 </head>
 <body> --%>
-	<div class="accordion" id="menu-${param.parentId}"><c:set var="menuList" value="${fns:getMenuList()}"/><c:set var="firstMenu" value="true"/><c:forEach items="${menuList}" var="menu" varStatus="idxStatus"><c:if test="${menu.parent.id eq (not empty param.parentId ? param.parentId:1)&&menu.isShow eq '1'}">
+	<div class="accordion" id="menu-${param.parentId}"><c:set var="menuList" value="${fns:getMenuList()}"/><c:set var="firstMenu" value="true"/>
+		<c:forEach items="${menuList}" var="menu" varStatus="idxStatus">
+			<c:if test="${menu.parent.id eq (not empty param.parentId ? param.parentId:1)&&menu.isShow eq '1'}">
 		<div class="accordion-group">
 		    <div class="accordion-heading">
 		    	<a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-${param.parentId}" data-href="#collapse-${menu.id}" href="#collapse-${menu.id}" title="${menu.remarks}"><i class="icon-chevron-${not empty firstMenu && firstMenu ? 'down' : 'right'}"></i>&nbsp;${menu.name}</a>
@@ -42,6 +44,7 @@
 				</div>
 		    </div>
 		</div>
-	</c:if></c:forEach></div><%--
+	</c:if>
+		</c:forEach></div><%--
 </body>
 </html> --%>
