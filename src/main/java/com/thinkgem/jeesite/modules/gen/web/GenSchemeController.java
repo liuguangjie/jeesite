@@ -65,12 +65,6 @@ public class GenSchemeController extends BaseController {
 	@RequiresPermissions("gen:genScheme:view")
 	@RequestMapping(value = "form")
 	public String form(GenScheme genScheme, Model model) {
-		if (StringUtils.isBlank(genScheme.getPackageName())){
-			genScheme.setPackageName("com.thinkgem.jeesite.modules");
-		}
-//		if (StringUtils.isBlank(genScheme.getFunctionAuthor())){
-//			genScheme.setFunctionAuthor(UserUtils.getUser().getName());
-//		}
 		model.addAttribute("genScheme", genScheme);
 		model.addAttribute("config", GenUtils.getConfig());
 		model.addAttribute("tableList", genTableService.findAll());

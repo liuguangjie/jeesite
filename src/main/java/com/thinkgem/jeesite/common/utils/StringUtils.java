@@ -47,7 +47,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     
     /**
      * 转换为字节数组
-     * @param str
      * @return
      */
     public static String toString(byte[] bytes){
@@ -273,9 +272,13 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * 		toUnderScoreCase("helloWorld") = "hello_world"
 	 */
     public static String toCamelCase(String s) {
-        if (s == null) {
+        if (s == null ) {
             return null;
         }
+        // 如果没有分隔符 '_' 返回原字符串
+		if (s.indexOf(SEPARATOR) == -1){
+        	return  s;
+		}
 
         s = s.toLowerCase();
 

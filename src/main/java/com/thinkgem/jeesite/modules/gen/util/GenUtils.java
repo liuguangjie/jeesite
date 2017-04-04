@@ -97,7 +97,8 @@ public class GenUtils {
 
 			// 插入字段
 			column.setIsInsert("1");
-			
+
+			//column.setIsEdit("1");
 			// 编辑字段
 			if (!StringUtils.equalsIgnoreCase(column.getName(), "id")
 					&& !StringUtils.equalsIgnoreCase(column.getName(), "create_by")

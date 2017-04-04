@@ -58,7 +58,7 @@ public class GenTableColumn extends DataEntity<GenTableColumn> {
 	
 	@Length(min=1, max=200)
 	public String getName() {
-		return StringUtils.lowerCase(name);
+		return name;
 	}
 
 	public void setName(String name) {
