@@ -58,7 +58,7 @@ public class GenTableColumn extends DataEntity<GenTableColumn> {
 	
 	@Length(min=1, max=200)
 	public String getName() {
-		return name;
+		return StringUtils.lowerCase(name);
 	}
 
 	public void setName(String name) {
@@ -258,7 +258,7 @@ public class GenTableColumn extends DataEntity<GenTableColumn> {
 	public List<String> getAnnotationList(){
 		List<String> list = Lists.newArrayList();
 		// 导入Jackson注解
-		if ("This".equals(getJavaType())){
+		/*if ("This".equals(getJavaType())){
 			list.add("com.fasterxml.jackson.annotation.JsonBackReference");
 		}
 		if ("java.util.Date".equals(getJavaType())){
@@ -275,7 +275,7 @@ public class GenTableColumn extends DataEntity<GenTableColumn> {
 		else if ("String".equals(getJavaType()) && !"0".equals(getDataLength())){
 			list.add("org.hibernate.validator.constraints.Length(min=0, max="+getDataLength()
 					+", message=\""+getComments()+"长度必须介于 0 和 "+getDataLength()+" 之间\")");
-		}
+		}*/
 		return list;
 	}
 	

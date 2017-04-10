@@ -12,7 +12,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +35,7 @@ import ${packageName}.${moduleName}.service<#if subModuleName != "">.${subModule
  * @version ${functionVersion}
  */
 @Controller
-@RequestMapping(value = "${r"${adminPath}"}/${urlPrefix}")
+@RequestMapping(value = "/${urlPrefix}")
 public class ${ClassName}Controller extends BaseController {
 
 	@Autowired
@@ -53,17 +52,15 @@ public class ${ClassName}Controller extends BaseController {
 		}
 		return entity;
 	}
-	
-	@RequiresPermissions("${permissionPrefix}:view")
-	@RequestMapping(value = {"list", ""})
+
+	@RequestMapping(value = {"/list"})
 	public String list(${ClassName} ${className}, HttpServletRequest request, HttpServletResponse response, Model model) {
 		List<${ClassName}> list = ${className}Service.findList(${className}); 
 		model.addAttribute("list", list);
 		return "${lastPackageName}/${viewPrefix}List";
 	}
 
-	@RequiresPermissions("${permissionPrefix}:view")
-	@RequestMapping(value = "form")
+	@RequestMapping(value = "/form")
 	public String form(${ClassName} ${className}, Model model) {
 		if (${className}.getParent()!=null && StringUtils.isNotBlank(${className}.getParent().getId())){
 			${className}.setParent(${className}Service.get(${className}.getParent().getId()));
@@ -87,8 +84,7 @@ public class ${ClassName}Controller extends BaseController {
 		return "${lastPackageName}/${viewPrefix}Form";
 	}
 
-	@RequiresPermissions("${permissionPrefix}:edit")
-	@RequestMapping(value = "save")
+	@RequestMapping(value = "/save")
 	public String save(${ClassName} ${className}, Model model, RedirectAttributes redirectAttributes) {
 		if (!beanValidator(model, ${className})){
 			return form(${className}, model);
@@ -98,17 +94,15 @@ public class ${ClassName}Controller extends BaseController {
 		return "redirect:"+Global.getAdminPath()+"/${viewPrefix}/?repage";
 	}
 	
-	@RequiresPermissions("${permissionPrefix}:edit")
-	@RequestMapping(value = "delete")
+	@RequestMapping(value = "/delete")
 	public String delete(${ClassName} ${className}, RedirectAttributes redirectAttributes) {
 		${className}Service.delete(${className});
 		addMessage(redirectAttributes, "删除${functionNameSimple}成功");
 		return "redirect:"+Global.getAdminPath()+"/${viewPrefix}/?repage";
 	}
 
-	@RequiresPermissions("user")
 	@ResponseBody
-	@RequestMapping(value = "treeData")
+	@RequestMapping(value = "/treeData")
 	public List<Map<String, Object>> treeData(@RequestParam(required=false) String extId, HttpServletResponse response) {
 		List<Map<String, Object>> mapList = Lists.newArrayList();
 		List<${ClassName}> list = ${className}Service.findList(new ${ClassName}());

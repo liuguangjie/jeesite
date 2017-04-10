@@ -147,11 +147,11 @@ public class GenTable extends DataEntity<GenTable> {
 			}
 			if (column.getIsNotBaseField()){
 				// 导入JSR303、Json等依赖包
-				for (String ann : column.getAnnotationList()){
+				/*for (String ann : column.getAnnotationList()){
 					if (!importList.contains(StringUtils.substringBeforeLast(ann, "("))){
 						importList.add(StringUtils.substringBeforeLast(ann, "("));
 					}
-				}
+				}*/
 			}
 		}
 		// 如果有子表，则需要导入List相关引用

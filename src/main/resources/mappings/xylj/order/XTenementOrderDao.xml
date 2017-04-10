@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xylj.order.dao.XTenementOrderDao">
+
+
+	<sql id="xTenementOrderColumns">
+		a.id AS "id",
+		a.username AS "userName",
+		a.userphone AS "userPhone",
+		a.roomid AS "roomId",
+		a.feetype AS "feeType",
+		a.typename AS "typeName",
+		a.propertyordernumber AS "propertyOrderNumber",
+		a.price AS "price",
+		a.fine AS "fine",
+		a.subtotal AS "subtotal",
+		a.pattern AS "pattern",
+		a.billid AS "billId",
+		a.ordertype AS "orderType",
+		a.createtime AS "createTime",
+		a.updatetime AS "updateTime",
+		a.paymentday AS "paymentDay",
+		a.endtime AS "endTime",
+		a.isdelete AS "isDelete",
+		a.userid AS "userId",
+		a.feetime AS "feeTime",
+		a.roommoneyid AS "roomMoneyId"
+	</sql>
+	
+	<sql id="xTenementOrderJoins">
+	</sql>
+    
+	<select id="get" resultType="XTenementOrder">
+		SELECT 
+			<include refid="xTenementOrderColumns"/>
+		FROM x_tenement_order a
+		<include refid="xTenementOrderJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="XTenementOrder">
+		SELECT 
+			<include refid="xTenementOrderColumns"/>
+		FROM x_tenement_order a
+		<include refid="xTenementOrderJoins"/>
+		<where>
+			
+			<if test="userName != null and userName != ''">
+				AND a.username = #{userName}
+			</if>
+			<if test="userPhone != null and userPhone != ''">
+				AND a.userphone = #{userPhone}
+			</if>
+			<if test="roomId != null and roomId != ''">
+				AND a.roomid = #{roomId}
+			</if>
+			<if test="feeType != null and feeType != ''">
+				AND a.feetype = #{feeType}
+			</if>
+			<if test="typeName != null and typeName != ''">
+				AND a.typename = #{typeName}
+			</if>
+			<if test="propertyOrderNumber != null and propertyOrderNumber != ''">
+				AND a.propertyordernumber = #{propertyOrderNumber}
+			</if>
+			<if test="fine != null and fine != ''">
+				AND a.fine = #{fine}
+			</if>
+			<if test="subtotal != null and subtotal != ''">
+				AND a.subtotal = #{subtotal}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="XTenementOrder">
+		SELECT 
+			<include refid="xTenementOrderColumns"/>
+		FROM x_tenement_order a
+		<include refid="xTenementOrderJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO x_tenement_order(
+			id,
+			username,
+			userphone,
+			roomid,
+			feetype,
+			typename,
+			propertyordernumber,
+			price,
+			fine,
+			subtotal,
+			pattern,
+			billid,
+			ordertype,
+			createtime,
+			updatetime,
+			paymentday,
+			endtime,
+			isdelete,
+			userid,
+			feetime,
+			roommoneyid
+		) VALUES (
+			#{id},
+			#{userName},
+			#{userPhone},
+			#{roomId},
+			#{feeType},
+			#{typeName},
+			#{propertyOrderNumber},
+			#{price},
+			#{fine},
+			#{subtotal},
+			#{pattern},
+			#{billId},
+			#{orderType},
+			#{createTime},
+			#{updateTime},
+			#{paymentDay},
+			#{endTime},
+			#{isDelete},
+			#{userId},
+			#{feeTime},
+			#{roomMoneyId}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE x_tenement_order SET 	
+			username = #{userName},
+			userphone = #{userPhone},
+			roomid = #{roomId},
+			feetype = #{feeType},
+			typename = #{typeName},
+			propertyordernumber = #{propertyOrderNumber},
+			price = #{price},
+			fine = #{fine},
+			subtotal = #{subtotal},
+			pattern = #{pattern},
+			billid = #{billId},
+			ordertype = #{orderType},
+			createtime = #{createTime},
+			updatetime = #{updateTime},
+			paymentday = #{paymentDay},
+			endtime = #{endTime},
+			isdelete = #{isDelete},
+			userid = #{userId},
+			feetime = #{feeTime},
+			roommoneyid = #{roomMoneyId}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM x_tenement_order
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
